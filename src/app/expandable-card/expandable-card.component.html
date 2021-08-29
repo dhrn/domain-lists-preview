@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="header">     
+    <div>Domain & Plan Name</div>
+    <div>Storage</div>
+    <div>Monthly Visitor</div>
+    <div>Domain</div>
+    <div>Status</div>
+  </div>
+  
+  <ng-container *ngFor="let domain of domainList">
+    <section [ngClass]="domain.expanded ? 'expanded-parent-domain' : 'parent-domain'"  (click)="domain.expanded = !domain.expanded">
+      <div class="domain-header">
+        <div class="column">
+          <strong>{{domain.domain}}</strong>
+          <span><i class="fas fa-shield-check"></i> Professional Plan</span>
+        </div>
+        <div class="column">
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar"  [style.width]="getPercentage(domain.usedStorage, domain.storage)"></div>
+          </div>
+          <span> {{domain.usedStorage}} GB of {{domain.storage}} GB </span>
+        </div>
+        <div class="column">
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar" [style.width]="getPercentage(domain.usedDomains, domain.availableDomains)"></div>
+          </div>
+          <span>{{domain.montlyVisitor}} GB of {{domain.monthlyVisitorCapacity}} GB</span>
+        </div>
+        <div>
+          <circle-progress class="circular" [options]="getOptions(domain.usedDomains, domain.availableDomains)"></circle-progress>
+        </div>
+        <div>{{domain.status}}</div>
+      </div>
+      <ng-container *ngIf="domain.expanded">
+        <div class="sub-domain" *ngFor="let subdomain of domain.subdomain">
+          <div> <strong> {{subdomain.name}} </strong></div>
+          <div class="row storage-row">{{subdomain.usedStorage}} GB  <span [ngClass]="{'staging-rectangle': subdomain.domainTag.toLowerCase() == 'staging', 'addon-rectangle': subdomain.domainTag.toLowerCase() == 'add on', 'primary-rectangle': subdomain.domainTag.toLowerCase() == 'primary'}" ></span></div>
+          <div class="row visitor-row"> {{subdomain.montlyVisitor}} GB <span [ngClass]="{'staging-rectangle': subdomain.domainTag.toLowerCase() == 'staging', 'addon-rectangle': subdomain.domainTag.toLowerCase() == 'add on', 'primary-rectangle': subdomain.domainTag.toLowerCase() == 'primary'}" ></span> </div>
+          <div><button [ngClass]="{'staging-btn': subdomain.domainTag.toLowerCase() == 'staging', 'addon-btn': subdomain.domainTag.toLowerCase() == 'add on', 'primary-btn': subdomain.domainTag.toLowerCase() == 'primary'}">{{subdomain.domainTag}}</button></div>
+          <div><button class="active-btn">Active</button></div>
+        </div>
+      </ng-container>
+    </section>
+  </ng-container> 
+</div>
