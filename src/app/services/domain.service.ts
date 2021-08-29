@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Domain } from './domain.interface';
 import { Observable, of } from 'rxjs';
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 import db from '../../../db.json';
 
 
@@ -17,7 +17,10 @@ export class DomainService {
 
   getDomainList(): Observable<Domain[]> {
     return this.http.get<Domain[]>(`${this.REST_API_SERVER}/domain_list`)
-        .pipe(catchError(() => {
+        .pipe(
+            // netlify hack
+          map((response) => response ?? db.domain_list),
+          catchError(() => {
           console.log('server seems downs. serving sample data');
           return of(db.domain_list as any)
         }));
