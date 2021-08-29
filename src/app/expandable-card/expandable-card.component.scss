@@ -1,0 +1,186 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  section {
+    width: 100%;
+  }
+
+  .header,
+  .domain-header,
+  .sub-domain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 24% 23% 23% 10% 10%;
+    column-gap: 20px;
+    align-content: center;
+  }
+
+  .header {
+    background-color: var(--theme-primary-light-background-color-two);
+    color: var(--theme-primary-lightgray-text-color);
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .domain-header {
+    background-color: var(--theme-primary-light-background-color-three);
+  }
+
+  .sub-domain {
+    background-color: var(--theme-primary-light-background-color-two);
+  }
+}
+
+// $flex-length: (
+//   domain_plan_name: 5em,
+//   storage: 5em,
+//   monthly_visitor: 5em,
+//   domain: 5em,
+//   status: 5em,
+// );
+
+$map: (
+  1: 5px 5px 5px 20px,
+  2: 5px,
+  3: 5px,
+  4: 5px,
+  5: 5px 10px 5px 5px,
+);
+
+@each $key, $value in $map {
+  .domain-header div:nth-child(#{$key}),
+  .header div:nth-child(#{$key}) {
+    padding: #{$value};
+    align-self: center;
+  }
+}
+
+$map: (
+  1: 15px 5px 15px 15px,
+  2: 15px 5px 15px 15px,
+  3: 15px 5px 15px 15px,
+  4: 15px 5px 15px 15px,
+  5: 15px 5px 15px 15px,
+);
+
+@each $key, $value in $map {
+  .sub-domain div:nth-child(#{$key}) {
+    padding: #{$value};
+    margin-left: 10px;
+    align-self: center;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.domain-tag {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #33cc86;
+  color: white;
+}
+
+.circular svg {
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.staging-rectangle {
+  background-color: var(--theme-staging-btn-color);
+  width: 1em;
+  height: 1em;
+}
+
+.primary-rectangle {
+  background-color: var(--theme-primary-btn-color);
+  width: 1em;
+  height: 1em;
+}
+
+.addon-rectangle {
+  background-color: var(--theme-addon-btn-color);
+  width: 1em;
+  height: 1em;
+}
+
+.storage-row span,
+.visitor-row span {
+  margin-top: 3px;
+}
+
+.active-btn {
+  background-color: #c5edee;
+  color: #1fcfcc;
+  height: 38px;
+  width: 100px;
+  border: none;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.primary-btn {
+  background-color: #d6ddf9;
+  color: var(--theme-primary-btn-color);
+  height: 38px;
+  width: 100px;
+  border: none;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.staging-btn {
+  background-color: #f1daf2;
+  color: var(--theme-staging-btn-color);
+  height: 38px;
+  width: 100px;
+  border: none;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.addon-btn {
+  background-color: #f7ede1;
+  color: var(--theme-addon-btn-color);
+  height: 38px;
+  width: 100px;
+  border: none;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+// progress bar
+.progress-bar-wrapper {
+  width: 240px;
+  height: 20px;
+  color: #000;
+  background-color: var(--theme-primary-light-background-color);
+  padding: 0px !important;
+  align-self: baseline !important;
+  border-radius: 5px;
+  border: 5px;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 20px;
+  width: 0%; //do not change this value it will update dynamically
+  background-color: var(--theme-progress-color-five);
+  padding: 0px !important;
+  align-self: baseline !important;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}

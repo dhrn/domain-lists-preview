@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: spock-regular;
+  src: url("assets/font/Spock/SpockPro-Regular.otf");
+}
+$defaults: (
+  --theme-progress-color-one: #33cc86,
+  --theme-progress-color-two: #5b7cfd,
+  --theme-progress-color-three: #5b7cfd,
+  --theme-progress-color-four: #5b7cfd,
+  --theme-progress-color-five: #1cc879,
+  --theme-primary-background-color: #5c7cfc,
+  --theme-primary-light-background-color: #e7eef7,
+  --theme-primary-light-background-color-two: #f5f6fa,
+  --theme-primary-light-background-color-three: #ffffff,
+  --theme-primary-text-color: #232d42,
+  --theme-primary-lightgray-text-color: #8a92a6,
+  --theme-primary-light-text-color: #ffffff,
+  --theme-primary-btn-color: #6983ea,
+  --theme-staging-btn-color: #db74d8,
+  --theme-addon-btn-color: #e8b162,
+);
+
+// propagates SCSS variables into the CSS variables scope
+:root {
+  @each $name, $value in $defaults {
+    #{$name}: #{$value};
+  }
+}
+
+body,
+html {
+  font-family: "spock-regular", "Arial", sans-serif !important;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}

@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  height: 100vh;
+
+  &-sidebar {
+    width: 300px;
+    background: var(--theme-primary-background-color);
+  }
+
+  &-main {
+    flex: 1;
+    background-color: var(--theme-primary-light-background-color);
+  }
+}
